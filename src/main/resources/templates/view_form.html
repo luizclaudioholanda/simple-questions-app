@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Home Page</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css"         rel="stylesheet">
+    <link href="css/accordion.css"         rel="stylesheet">
+</head>
+<body>
+
+    <a th:href="@{/fill-forms(userId=*{userId})}">Create Form</a>
+    <input type="hidden" th:value="*{userId}" id="userId"/>
+
+    <div class="container-fluid center" th:each="f, iStat : ${fillFormListDTO}">
+
+        <h3><span th:text="${f.title}"/></h3>
+        <span>Created Date: </span><p  th:text="${f.createdDate}">Created Date: </p>
+
+        <div th:each="qst : ${f.questions}">
+            <p class="accordion" th:text="${qst.question}"></p>
+            <div class="panel" th:text="${qst.answer}"></div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/accordion.js"></script>
+
+</body>
+</html>

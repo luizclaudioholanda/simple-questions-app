@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css"         rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Create Questions</title>
+</head>
+<body>
+
+<a href="create-forms">Create Form</a>
+<!-- Adding question/answer -->
+
+<form action="#" th:action="@{/questions}" th:object="${questionDTO}" method="post">
+    <div class="form-group">
+        <label for="formQuestion">Question</label>
+        <input type="text" class="form-control" th:field="*{question}" id="question">
+    </div>
+    <div class="form-group">
+        <label for="formQuestion">Answer</label>
+        <input type="text" class="form-control" th:field="*{answer}"  id="answer">
+    </div>
+    <input type="submit" class="btn btn-primary" id="btnAddQuestion">Add Question</input>
+
+    <table class="table table-striped table-primary">
+
+        <thead class="ttop">
+        <tr class="table-info">
+            <td>Question</td>
+            <td>Answer</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="qst, iStat : ${questions}" th:style="${iStat.odd}? 'font-weight: normal;'">
+
+            <td th:text="${qst.question}"></td>
+            <td th:text="${qst.answer}"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<!-- End Adding question/answer -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/table-form.js"></script>
+</body>
+</html>

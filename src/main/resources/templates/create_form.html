@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css"         rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Create Form</title>
+</head>
+<body>
+
+<a th:href="@{/create-questions(formId=*{formId})}">Create Questions</a>
+
+    <div class="container">
+        <form action="#" th:action="@{/fill-forms}" th:object="${fillFormDTO}" method="post">
+            <input type="hidden" th:value="${param.userId}" name="userId" />
+
+            <div class="form-group">
+                <label for="formTitle">Title</label>
+                <input type="text" class="form-control" th:field="*{title}" id="title" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add form</button>
+            <input type="hidden" id="idForm" th:field="*{id}">
+        </form>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/table-form.js"></script>
+
+</body>
+</html>
